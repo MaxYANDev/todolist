@@ -1,0 +1,40 @@
+import React from 'react';
+
+class AddItem extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      value: '',
+    }
+  }
+
+  onInputChange(value){
+    this.setState({
+      value
+    })
+  }
+  render(){
+    const {value} = this.state;
+    const {onAdd} = this.props;
+    return(
+      <form onSubmit = {
+        (event) => {
+          event.preventDefault();
+          onAdd(value);
+        }
+      }
+      >
+        <input 
+          value = {value}
+          type="text"
+          onChange = {({target:{value}}) => this.onInputChange(value)}
+        />
+        &nbsp;
+        <button>AddItem</button>
+      </form>
+    );
+  }
+}
+
+export default AddItem;
