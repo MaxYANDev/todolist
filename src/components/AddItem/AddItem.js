@@ -22,6 +22,9 @@ class AddItem extends React.Component{
         (event) => {
           event.preventDefault();
           onAdd(value);
+          this.setState({
+            value:'',
+          });
         }
       }
       >
