@@ -21,6 +21,7 @@ class AddItem extends React.Component{
       <form onSubmit = {
         (event) => {
           event.preventDefault();
+          if(value === '') return;
           onAdd(value);
           this.setState({
             value:'',
@@ -34,7 +35,7 @@ class AddItem extends React.Component{
           onChange = {({target:{value}}) => this.onInputChange(value)}
         />
         &nbsp;
-        <button>AddItem</button>
+        <button>AddItem(heloo)</button>
       </form>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import AddItem from '../AddItem';
+import List from '../List';
 
 class Todolist extends React.Component{
   constructor(props){
@@ -17,7 +18,15 @@ class Todolist extends React.Component{
     this.setState({
       list: newList
     });
-   
+    this.onClickDoneButton = this.onClickDoneButton.bind(this);
+  }
+
+  onClickDoneButton(item){
+    const {list} = this.state;
+    const newList = list.filter((value) => value !== item);
+    this.setState({
+      list: newList,
+    })
   }
   render(){
     const {list} = this.state;
@@ -27,11 +36,10 @@ class Todolist extends React.Component{
         <AddItem 
           onAdd = {this.addItemList}
         />
-        <ul>
-          {list.map((value, index) => (
-            <li key = {index}>{value}</li>
-          ))}
-        </ul>
+        <List 
+          items = {this.state.list}
+          onClickButton = {this.onClickDoneButton}
+        />
       </div>
     );
   }
